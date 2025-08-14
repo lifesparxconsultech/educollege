@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useContent } from '@/contexts/ContentContext';
 import { useNavigate } from 'react-router-dom';
-
 
 const HeroSection: React.FC = () => {
   const navigate = useNavigate();
