@@ -1,0 +1,4 @@
+1. mounting problem in Leadform, when form is open it refetch itself on each carosouel change check the problem oki. ( fixed move Lead form to Header)
+2. Check in Event the Event Type select option giving error. ()
+3. Lead Form onClose it fetch the data why ?? (check for the error oki).
+
