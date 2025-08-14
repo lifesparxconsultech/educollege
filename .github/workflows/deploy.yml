@@ -1,0 +1,37 @@
+name: Build and Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to deploy branch
+        run: |
+          git config --global user.name "lifesparxconsultech"
+          git config --global user.email "skaushik222222@gmail.com"
+          git fetch origin
+          git checkout deploy || git checkout --orphan deploy
+          rm -rf *
+          cp -r dist/* .
+          git add .
+          git commit -m "Deploy build from $GITHUB_SHA" || echo "No changes to commit"
+          git push origin deploy --force
